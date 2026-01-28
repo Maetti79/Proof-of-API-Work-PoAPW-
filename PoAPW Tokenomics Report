@@ -1,0 +1,191 @@
+# PoAPW Tokenomics Report
+
+## Simulation-Based Analysis (Optimized Model)
+
+---
+
+## 1. Purpose of This Report
+
+This document provides a **quantitative tokenomics analysis** of the Proof of API-Work (PoAPW) protocol based on simulated usage data.
+
+The goal is to validate that the optimized model:
+
+* covers infrastructure and service costs
+* remains inflation-safe under growth
+* is resistant to economic abuse
+* scales with real API demand
+
+All simulations use the **final optimized ruleset**.
+
+---
+
+## 2. Model Summary (Final Rules)
+
+### Payment & Fees
+
+* Each API call has a declared token price (per route)
+* Payment is embedded in the API call payload
+* Settlement uses a claim–confirm mechanism
+* Fixed **1% protocol fee** on every successful call
+* Fees are used exclusively for infrastructure operations
+
+### Minting (Optimized)
+
+* Minting produces **Mint Credits (MC)**
+* MC are non-transferable and usage-only
+* MC convert 1:1 into real tokens **only when spent**
+* Minting is enabled only during a **time-bound onboarding window** (30–60 days)
+
+### Minting Caps
+
+* Per route: `min(route_price × 10, 1,000)`
+* Per API (all routes combined): **5,000 tokens/day**
+* Per API collection: **1,000 tokens total**
+
+### Anti-Abuse Controls
+
+* Protocol-wide minimum route price enforced
+* Failed calls mint zero
+* High-volume usage does not increase minting
+
+---
+
+## 3. Simulation Setup
+
+### Scope
+
+* **10 projects** at launch
+* Each project integrates **2–6 APIs**
+* Calls per project per day: **500 – 50,000**
+* Average route price: **2–50 tokens**
+* Simulation horizon:
+
+  * 30-day baseline
+  * 12-month growth projection
+
+---
+
+## 4. 30-Day Baseline Simulation Results
+
+### Usage & Spend (per project)
+
+| Metric             | Range          |
+| ------------------ | -------------- |
+| Daily API calls    | 500 – 50,000   |
+| Daily token spend  | ~5,000 – ~2.3M |
+| 30-day token spend | ~147k – ~71M   |
+
+### Protocol Fees (1%)
+
+| Metric      | Range                |
+| ----------- | -------------------- |
+| Daily fees  | ~50 – ~23,700 tokens |
+| 30-day fees | ~1.4k – ~711k tokens |
+
+**Observation:** Infrastructure funding scales linearly with real usage.
+
+---
+
+### Minting (Per Project)
+
+| Metric         | Value          |
+| -------------- | -------------- |
+| Daily mint cap | 5,000 tokens   |
+| 30-day mint    | 150,000 tokens |
+
+Across **10 projects**:
+
+* **Total 30-day mint:** ~1,500,000 tokens
+
+**Observation:** Minting reaches its cap quickly and does not scale with call volume.
+
+---
+
+## 5. Year-1 Growth Simulation
+
+### Assumptions
+
+* Projects grow from **10 → 30**
+* Average calls per project per day grow from **5,000 → 80,000**
+* Average route price: **20 tokens**
+
+---
+
+### Monthly Aggregates (Selected Points)
+
+| Month | Projects | Monthly Token Spend | Monthly Fees (1%) | Monthly Minted |
+| ----- | -------- | ------------------- | ----------------- | -------------- |
+| 1     | 10       | ~2.25M              | ~22.5k            | ~1.5M          |
+| 6     | 19       | ~16.15M             | ~161.5k           | ~2.85M         |
+| 12    | 30       | **~48.0M**          | **~480k**         | **~4.5M**      |
+
+---
+
+## 6. Key Ratios (Health Indicators)
+
+### Mint vs Spend
+
+* Month 12:
+
+  * Tokens spent: ~48M
+  * Tokens minted: ~4.5M
+
+➡️ **>90% of tokens must be purchased via the marketplace**
+
+### Fees vs Mint
+
+* Protocol fees dominate minting value
+* Minting acts only as a bootstrap mechanism
+
+---
+
+## 7. Energy-Anchored Perspective
+
+Marketplace reference rate:
+
+* **1,000 tokens = 1 Wh**
+
+Month 12 minting equivalent:
+
+* ~4,500 Wh (4.5 kWh)
+
+This is negligible compared to the infrastructure implied by ~48M tokens of usage.
+
+---
+
+## 8. Abuse & Attack Simulation Results
+
+| Attack Vector    | Economic Outcome               |
+| ---------------- | ------------------------------ |
+| Self-calls       | Unprofitable (fees + caps)     |
+| API loops        | Unprofitable (fees accumulate) |
+| Cheap-route spam | Blocked by min price + caps    |
+| Callback replay  | Rejected (nonce / call_id)     |
+| High-volume spam | Costs attacker; no extra mint  |
+
+**Conclusion:** All tested attack vectors are economically negative.
+
+---
+
+## 9. Token Flow Summary
+
+> Usage drives spend → spend funds infrastructure → minting is capped and temporary → marketplace supplies demand.
+
+There is no path to extract value without delivering real API work.
+
+---
+
+## 10. Conclusion
+
+The PoAPW tokenomics model demonstrates:
+
+* predictable and bounded token issuance
+* strong alignment between usage and revenue
+* structural resistance to inflation and abuse
+* enterprise-grade cost transparency
+
+Minting accelerates onboarding.
+
+**Usage sustains the system.**
+
+This makes PoAPW suitable as long-term infrastructure rather than a speculative token economy.
