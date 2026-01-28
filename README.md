@@ -1,266 +1,180 @@
-# Proof of API‑Work (PoAPW)
+# Proof of API-Work (PoAPW)
 
-## A Machine‑to‑Machine Token Protocol for AI‑Native Software Economies
-
----
-
-## Abstract
-
-This whitepaper introduces **Proof of API‑Work (PoAPW)**, a protocol that enables **AI agents and software systems to earn tokens by implementing verifiable APIs and spend tokens for real usage**. Unlike speculative or compute‑wasting models, PoAPW ties token issuance and circulation directly to **measurable software value**: implemented integrations, verified behavior, and metered consumption.
-
-The protocol establishes a closed economic loop in which:
-
-* Developers and AI agents earn tokens for delivering tested, verifiable API integrations
-* AI agents and users pay tokens for actual API usage
-* The protocol captures fees on real demand rather than inflation or hype
-
-PoAPW is designed as **infrastructure**, not an investment product, and is compatible with enterprise usage, regulatory clarity, and long‑term sustainability.
+## Litepaper
 
 ---
 
-## 1. Problem Statement
+## Executive Summary
 
-Modern AI systems increasingly depend on external APIs and services:
+**Proof of API-Work (PoAPW)** is a machine-to-machine settlement protocol that allows APIs and AI agents to **earn tokens by delivering successful responses** and **spend tokens to consume services**.
 
-* LLM providers
+Unlike speculative crypto models, PoAPW directly ties token flow to **real infrastructure usage**:
+
+* API calls cost tokens
+* Tokens are earned only on successful responses or callbacks
+* Protocol fees are used exclusively to run the infrastructure
+
+PoAPW is designed as **enterprise-grade infrastructure**, not a financial product.
+
+---
+
+## The Problem
+
+Modern software and AI systems depend on APIs for:
+
+* data access
+* computation
+* verification
+* compliance
+
+However, current billing models are:
+
+* human-centric
+* subscription-heavy
+* poorly suited for autonomous agents
+
+At the same time, most crypto incentive systems reward activity that is:
+
+* unverifiable
+* detached from real costs
+* speculative by design
+
+Autonomous systems need a **pay-per-result** model.
+
+---
+
+## The Solution: Proof of API-Work
+
+PoAPW introduces a simple rule:
+
+> **APIs earn tokens by being called and successfully delivering data.**
+
+No response, no callback, no payout.
+
+This aligns incentives across:
+
+* API providers
+* AI agents
+* infrastructure operators
+
+---
+
+## How It Works (High Level)
+
+1. An API is integrated into the PoAPW system
+2. The integration is verified via automated tests and callbacks
+3. The API becomes callable through the PoAPW gateway
+4. Callers prepay tokens (or purchase them)
+5. Tokens are escrowed per call
+6. Tokens are released only on:
+
+   * successful synchronous response, or
+   * verified asynchronous callback
+
+---
+
+## Integration & Testing
+
+API providers earn initial tokens by integrating their API into PoAPW.
+
+During the testing phase:
+
+* the protocol actively calls the API
+* successful callbacks mint limited testing tokens
+* these tokens fund continued iteration
+
+This enables integration **without upfront capital** while preventing abuse through strict caps.
+
+---
+
+## Token Model (Short)
+
+### Utility
+
+* Tokens are required to call APIs
+* Tokens are earned by APIs on success
+* Tokens may be purchased via the protocol marketplace
+
+### Per-Call Pricing
+
+Each API call has a deterministic token cost:
+
+* base call cost
+* variable cost based on response size or payload
+* protocol fee
+
+### Fee Usage
+
+* All protocol fees are used to operate infrastructure:
+
+  * compute
+  * hosting
+  * networking
+  * verification
+
+No fees are distributed as yield.
+
+---
+
+## Energy-Anchored Marketplace
+
+PoAPW operates a marketplace to ensure token availability.
+
+* **1,000 tokens are sold at a reference price equivalent to 1 Wh of energy**
+
+This provides:
+
+* predictable pricing
+* real-world cost anchoring
+* non-speculative valuation
+
+Tokens exist to enable usage, not investment.
+
+---
+
+## Why This Works
+
+* Every token corresponds to real work
+* Infrastructure costs are continuously covered
+* Autonomous systems can transact independently
+* Enterprises can budget and audit usage
+
+PoAPW behaves more like **cloud infrastructure billing** than a crypto economy.
+
+---
+
+## Use Cases
+
+* AI-to-AI workflows
+* Data and analytics APIs
+* Compliance and verification services
 * Blockchain indexers
-* Compliance and risk engines
-* Data pipelines and analytics services
-
-However, today’s ecosystem suffers from three structural problems:
-
-1. **Integration cost is front‑loaded**
-   Developers must invest time and money to integrate APIs before any value is realized.
-
-2. **Usage billing is human‑centric**
-   Existing billing models assume human operators, not autonomous agents.
-
-3. **Crypto incentive models are detached from real work**
-   Most tokens reward speculation, idle compute, or unverifiable “work”.
-
-As AI systems become autonomous economic actors, a new model is required:
-
-> **A protocol where software earns by building, pays by using, and settles autonomously.**
+* Event-driven and callback-based systems
 
 ---
 
-## 2. Design Goals
+## Positioning & Compliance
 
-PoAPW is designed around the following principles:
+PoAPW tokens are:
 
-* **Verifiable Work**: Only externally requested, testable software work is rewarded
-* **Demand‑Bound Minting**: Tokens are issued only when real economic demand exists
-* **Machine‑Native Payments**: AI agents can hold balances, pay, and earn autonomously
-* **Anti‑Gaming by Design**: No self‑mining, no fake tasks, no idle inflation
-* **Enterprise Compatibility**: Clear pricing, auditable usage, compliance‑friendly framing
+* utility and settlement units
+* non-yield-bearing
+* usage-driven
 
----
-
-## 3. System Overview
-
-The protocol consists of four core components:
-
-1. **Integration Specifications**
-2. **Proof of API‑Work (PoAPW)**
-3. **Metered Usage Settlement**
-4. **Native Utility Token**
-
-### High‑Level Flow
-
-1. A sponsor publishes an API Integration Specification
-2. A developer or AI agent implements the integration
-3. The implementation is verified via automated tests and open challenges
-4. The contributor earns tokens (build reward)
-5. Users and AI agents pay tokens to consume the API
-6. Fees are distributed to the protocol, maintainers, and verifiers
+No profit promises are made.
 
 ---
 
-## 4. Integration Specifications
+## Conclusion
 
-An **Integration Specification** defines a unit of work eligible for rewards.
+Proof of API-Work provides a pragmatic foundation for machine-native economies.
 
-Each specification includes:
+By tying tokens to successful API execution and real infrastructure costs, PoAPW enables:
 
-* OpenAPI / JSON schema
-* Authentication requirements
-* Deterministic test cases and fixtures
-* Error handling rules
-* Rate limits and constraints
+* sustainable usage-based pricing
+* autonomous AI commerce
+* enterprise-grade trust
 
-Each spec is uniquely identified by a cryptographic hash and registered on‑chain.
+PoAPW is not designed to speculate.
 
-Only registered specifications are eligible for rewards.
-
----
-
-## 5. Proof of API‑Work (PoAPW)
-
-### 5.1 Definition
-
-**Proof of API‑Work** is a mechanism by which a contributor proves that a specified API integration:
-
-* Has been implemented
-* Conforms to the published specification
-* Passes all canonical tests
-* Survives an adversarial challenge period
-
-PoAPW does **not** attempt to judge code quality or creativity. It verifies **observable behavior**.
-
----
-
-### 5.2 Work Submission
-
-A submission includes:
-
-* Source code commit hash
-* Build artifact or container image hash
-* Signed manifest describing the implementation
-
----
-
-### 5.3 Verification Process
-
-Verification occurs in two phases:
-
-#### Phase A — Automated Verification
-
-* Canonical CI executes the official test suite
-* All required behaviors must pass
-
-#### Phase B — Challenge Window
-
-* A fixed time window during which anyone may submit a failing test case
-* Valid challenges invalidate the submission
-* Challengers are rewarded; submitters may be slashed
-
-If the submission survives both phases, PoAPW is considered complete.
-
----
-
-## 6. Token Issuance (Build Rewards)
-
-Tokens are issued **only** upon successful PoAPW completion.
-
-### Key Constraints
-
-* Rewards are capped per specification
-* Rewards are funded from a predefined bounty pool
-* No perpetual or automatic inflation
-
-This ensures that:
-
-* Token supply growth is bounded
-* Issuance is directly tied to useful software
-
----
-
-## 7. Metered Usage & AI‑to‑AI Payments
-
-### 7.1 Usage Model
-
-APIs integrated via PoAPW are consumed through a metered gateway:
-
-* Per call
-* Per compute unit
-* Or per subscription tier
-
-Users and AI agents pre‑fund balances and are charged based on usage.
-
-### 7.2 Machine‑to‑Machine Settlement
-
-AI agents:
-
-* Hold token balances
-* Pay for API calls autonomously
-* Earn tokens for providing services
-
-This enables fully automated AI workflows without human billing intervention.
-
----
-
-## 8. Fee Distribution
-
-Usage fees are split as follows (illustrative):
-
-* Protocol Treasury: 60–70%
-* Integration Maintainers: 20–30%
-* Verifiers / Challengers: 5–10%
-
-This aligns long‑term maintenance, security, and protocol sustainability.
-
----
-
-## 9. Security & Anti‑Abuse Measures
-
-PoAPW includes multiple safeguards:
-
-* Sponsored specs only (no self‑assigned work)
-* Mandatory stake for submissions
-* Challenge‑based verification
-* Usage must be paid (wash trading is costly)
-* Reputation tracking for agents and contributors
-
----
-
-## 10. Economic Model Summary
-
-| Action                 | Result             |
-| ---------------------- | ------------------ |
-| Implement verified API | Earn tokens        |
-| Use API                | Spend tokens       |
-| Verify or challenge    | Earn fees          |
-| Operate protocol       | Earn protocol fees |
-
-The protocol earns from **real usage**, not speculation.
-
----
-
-## 11. Legal & Regulatory Positioning
-
-PoAPW tokens are designed as:
-
-* Utility and settlement tokens
-* Payment units for software usage
-* Non‑yield‑bearing
-* Non‑investment products
-
-No profit guarantees or passive income claims are made. Token value derives solely from usage demand.
-
----
-
-## 12. Roadmap (Indicative)
-
-**Phase 1**
-
-* Core contracts (spec registry, bounty escrow)
-* Single integration type
-* Manual verification
-
-**Phase 2**
-
-* Automated CI verification
-* Usage gateway
-* AI agent wallets
-
-**Phase 3**
-
-* Multi‑agent verification
-* Reputation and staking
-* Enterprise onboarding
-
----
-
-## 13. Conclusion
-
-Proof of API‑Work introduces a pragmatic, verifiable, and economically sound foundation for AI‑native software markets.
-
-By rewarding real integrations and charging for real usage, PoAPW enables:
-
-* Sustainable token economics
-* Autonomous AI‑to‑AI commerce
-* A bridge between crypto infrastructure and real‑world software systems
-
-This protocol is not designed to speculate.
-
-It is designed to **run**.
+It is designed to **run software**.
