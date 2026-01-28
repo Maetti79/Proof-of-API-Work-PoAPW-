@@ -1,155 +1,180 @@
 # Proof of API-Work (PoAPW)
 
-## Litepaper
+## Litepaper – Usage‑Anchored, Enterprise‑Grade API Economics
 
 ---
 
 ## Executive Summary
 
-**Proof of API-Work (PoAPW)** is a machine-to-machine settlement protocol that allows APIs and AI agents to **earn tokens by delivering successful responses** and **spend tokens to consume services**.
+**Proof of API‑Work (PoAPW)** is a machine‑native settlement protocol where **APIs earn tokens by being called and successfully delivering results**, and **callers pay tokens as part of the API request itself**.
 
-Unlike speculative crypto models, PoAPW directly ties token flow to **real infrastructure usage**:
+Tokens are not speculative assets. They are **usage credits anchored to infrastructure cost**, designed to cover hosting, compute, networking, and verification.
 
-* API calls cost tokens
-* Tokens are earned only on successful responses or callbacks
-* Protocol fees are used exclusively to run the infrastructure
+PoAPW introduces:
 
-PoAPW is designed as **enterprise-grade infrastructure**, not a financial product.
+* payment embedded directly in API calls
+* claim‑and‑confirm settlement
+* deterministic per‑route pricing
+* strictly capped, usage‑bound minting
+* a fixed 1% infrastructure fee
+
+PoAPW behaves like **cloud billing with cryptographic settlement**.
 
 ---
 
 ## The Problem
 
-Modern software and AI systems depend on APIs for:
+Modern software and AI systems rely on APIs for:
 
 * data access
 * computation
-* verification
-* compliance
+* verification and compliance
 
-However, current billing models are:
+Existing models are poorly suited for autonomous systems:
 
-* human-centric
-* subscription-heavy
-* poorly suited for autonomous agents
+* subscriptions assume humans
+* invoices assume trust
+* crypto tokens reward speculation, not delivery
 
-At the same time, most crypto incentive systems reward activity that is:
+Autonomous systems need a model where:
 
-* unverifiable
-* detached from real costs
-* speculative by design
-
-Autonomous systems need a **pay-per-result** model.
+> **Work is paid only when it is successfully delivered.**
 
 ---
 
-## The Solution: Proof of API-Work
+## The Core Rule
 
-PoAPW introduces a simple rule:
+> **An API earns tokens only when a call succeeds and returns data or executes a valid callback.**
 
-> **APIs earn tokens by being called and successfully delivering data.**
-
-No response, no callback, no payout.
-
-This aligns incentives across:
-
-* API providers
-* AI agents
-* infrastructure operators
+No response → no payout
+No callback → no payout
 
 ---
 
-## How It Works (High Level)
+## Payment in the API Call
 
-1. An API is integrated into the PoAPW system
-2. The integration is verified via automated tests and callbacks
-3. The API becomes callable through the PoAPW gateway
-4. Callers prepay tokens (or purchase them)
-5. Tokens are escrowed per call
-6. Tokens are released only on:
+Each API request includes a **token payment intent** as part of the payload.
 
-   * successful synchronous response, or
-   * verified asynchronous callback
+1. Caller prepays tokens (or purchases them via the marketplace)
+2. Tokens are embedded in the API call
+3. Tokens are locked to a unique call identifier
+4. Tokens are provisional until confirmation
 
----
-
-## Integration & Testing
-
-API providers earn initial tokens by integrating their API into PoAPW.
-
-During the testing phase:
-
-* the protocol actively calls the API
-* successful callbacks mint limited testing tokens
-* these tokens fund continued iteration
-
-This enables integration **without upfront capital** while preventing abuse through strict caps.
+If no valid response or callback occurs, tokens automatically revert.
 
 ---
 
-## Token Model (Short)
+## Claim–Confirm Settlement
+
+PoAPW uses a two‑phase settlement mechanism:
+
+1. **Claim** – The API claims the embedded payment after accepting the request
+2. **Confirm** – The caller confirms success after receiving data or a callback
+
+Only after confirmation do tokens become final.
+
+This ensures:
+
+* APIs cannot be paid without delivery
+* callers cannot receive data without committing funds
+
+---
+
+## API Pricing Declaration
+
+Each API declares its pricing **per command / route** as part of its API description:
+
+* base call price (tokens)
+* optional payload‑based component
+* fixed protocol fee (1%)
+
+Pricing is deterministic, transparent, and auditable before the call is made.
+
+---
+
+## Token Usage
 
 ### Utility
 
 * Tokens are required to call APIs
 * Tokens are earned by APIs on success
-* Tokens may be purchased via the protocol marketplace
+* Tokens can be purchased via the PoAPW marketplace
 
-### Per-Call Pricing
+Tokens are not yield‑bearing and confer no ownership rights.
 
-Each API call has a deterministic token cost:
+---
 
-* base call cost
-* variable cost based on response size or payload
-* protocol fee
+## Infrastructure Fee
 
-### Fee Usage
-
-* All protocol fees are used to operate infrastructure:
+* A **fixed 1% fee** is applied to every successful call
+* The fee is used **exclusively** to operate the infrastructure:
 
   * compute
   * hosting
   * networking
   * verification
+  * settlement and marketplace
 
-No fees are distributed as yield.
-
----
-
-## Energy-Anchored Marketplace
-
-PoAPW operates a marketplace to ensure token availability.
-
-* **1,000 tokens are sold at a reference price equivalent to 1 Wh of energy**
-
-This provides:
-
-* predictable pricing
-* real-world cost anchoring
-* non-speculative valuation
-
-Tokens exist to enable usage, not investment.
+Fees are operational, not financial.
 
 ---
 
-## Why This Works
+## Energy‑Anchored Marketplace
 
-* Every token corresponds to real work
-* Infrastructure costs are continuously covered
-* Autonomous systems can transact independently
-* Enterprises can budget and audit usage
+PoAPW operates a native marketplace to guarantee token availability.
 
-PoAPW behaves more like **cloud infrastructure billing** than a crypto economy.
+* **1,000 tokens = reference price of 1 Wh of energy**
+
+This anchor:
+
+* provides predictable pricing
+* reflects real resource consumption
+* avoids speculative valuation
+
+---
+
+## Usage‑Bound Minting
+
+Minting exists to bootstrap integration and interaction, not to create inflation.
+
+### Per API Route
+
+```
+minted_tokens = min(route_price × 10, 1,000)
+```
+
+* Triggered only on successful response or callback
+
+### Per Complete API
+
+* Maximum minting across all routes: **5,000 tokens**
+
+### Per API Collection
+
+* Maximum minting across a large API suite: **1,000 tokens**
+
+Once a cap is reached, usage continues but no further minting occurs.
+
+---
+
+## Economic Properties
+
+* No success → no payment
+* No payment → no processing
+* No delivery → no minting
+* No unbounded inflation
+
+Every token transferred or minted corresponds to real system work.
 
 ---
 
 ## Use Cases
 
-* AI-to-AI workflows
+* AI‑to‑AI workflows
 * Data and analytics APIs
 * Compliance and verification services
 * Blockchain indexers
-* Event-driven and callback-based systems
+* Event‑driven systems
 
 ---
 
@@ -158,23 +183,22 @@ PoAPW behaves more like **cloud infrastructure billing** than a crypto economy.
 PoAPW tokens are:
 
 * utility and settlement units
-* non-yield-bearing
-* usage-driven
+* usage‑driven
+* non‑yield‑bearing
+* non‑investment products
 
-No profit promises are made.
+PoAPW is designed for **enterprise, auditability, and regulatory clarity**.
 
 ---
 
 ## Conclusion
 
-Proof of API-Work provides a pragmatic foundation for machine-native economies.
+Proof of API‑Work establishes a simple, enforceable rule for machine economies:
 
-By tying tokens to successful API execution and real infrastructure costs, PoAPW enables:
+> **Pay only for successful work.**
 
-* sustainable usage-based pricing
-* autonomous AI commerce
-* enterprise-grade trust
+By embedding payment into API calls, anchoring value to infrastructure cost, and strictly bounding minting, PoAPW enables trustworthy, autonomous software markets.
 
 PoAPW is not designed to speculate.
 
-It is designed to **run software**.
+It is designed to **run infrastructure**.
